@@ -56,6 +56,22 @@ This repository provides Claude Code configurations specifically designed for R 
 | **planner** | Implementation planning specialist |
 | **code-reviewer** | Security and quality review |
 
+### Hooks (Context Window Management)
+
+| Hook | Trigger | Description |
+|------|---------|-------------|
+| **suggest-compact** | PreToolUse (Edit/Write) | Suggests `/compact` after 50 tool calls, then every 25 |
+| **pre-compact** | PreCompact | Saves session state before context compaction |
+| **session-start** | SessionStart | Reports available session history and learned skills |
+| **session-end** | SessionEnd | Persists session state for continuity |
+| **doc-blocker** | PreToolUse (Write .md) | Warns about creating random .md files |
+
+These hooks help optimize context window usage by:
+
+- Suggesting strategic compaction at logical task boundaries
+- Preserving session state across compaction events
+- Consolidating documentation to reduce context bloat
+
 ## Installation
 
 ### Option 1: Copy to your project (recommended)
@@ -131,6 +147,14 @@ claude-code-r-skills/
 ├── .gitignore
 ├── .claude/
 │   ├── CLAUDE.md                    # Project instructions
+│   ├── hooks/
+│   │   ├── hooks.json               # Hook configuration
+│   │   └── scripts/
+│   │       ├── utils.js             # Shared utilities
+│   │       ├── suggest-compact.js   # Strategic compaction
+│   │       ├── pre-compact.js       # Save state before compact
+│   │       ├── session-start.js     # Load previous context
+│   │       └── session-end.js       # Persist session state
 │   └── skills/
 │       ├── tidyverse-patterns/
 │       ├── rlang-patterns/
