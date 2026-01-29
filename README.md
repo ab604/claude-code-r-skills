@@ -2,6 +2,13 @@
 
 A curated collection of Claude Code configurations for modern R development. These skills, rules, commands, and agents help Claude Code understand R best practices and generate idiomatic, high-quality R code.
 
+## Acknowledgments
+
+This project uses and builds on the work of:
+
+- **[sj-io](https://gist.github.com/sj-io/3828d64d0969f2a0f05297e59e6c15ad)** - Original R tidyverse expert guide that formed the foundation for the R skills in this repository
+- **[Affaan M / everything-claude-code](https://github.com/affaan-m/everything-claude-code)** - Framework structure, rules, commands, and agents adapted for R development
+
 ## Overview
 
 This repository provides Claude Code configurations specifically designed for R developers, combining:
@@ -169,23 +176,6 @@ claude-code-r-skills/
 - **R packages**: Use `pak` for installation
 - **R environments**: Use `renv` for project isolation
 - **Python**: Use `uv` for Python environments (if needed)
-
-## Contributing
-
-Contributions welcome! Please ensure any additions:
-
-1. Follow existing file formats (YAML frontmatter for skills/commands/agents)
-2. Include practical R code examples
-3. Highlight modern patterns over legacy approaches
-4. Include "when to use" and "when to avoid" guidance
-5. Add tests or examples where applicable
-
-## Acknowledgments
-
-This project builds on the work of others:
-
-- **[sj-io](https://gist.github.com/sj-io/3828d64d0969f2a0f05297e59e6c15ad)** - Original R tidyverse expert guide that formed the foundation for the R skills in this repository
-- **[Affaan M / everything-claude-code](https://github.com/affaan-m/everything-claude-code)** - Framework structure, rules, commands, and agents adapted for R development
 
 ## License
 
