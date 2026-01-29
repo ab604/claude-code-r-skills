@@ -26,7 +26,8 @@ For detailed guidance on specific topics, refer to these skill files:
 | **Style Guide** | [r-style-guide](skills/r-style-guide/SKILL.md) | Naming, spacing, function design |
 | **OOP Systems** | [r-oop](skills/r-oop/SKILL.md) | S7, S3, S4, vctrs decision guide |
 | **Package Development** | [r-package-development](skills/r-package-development/SKILL.md) | Dependencies, API design, testing |
-| **Bayesian Inference** | [r-bayes](skills/r-bayes/SKILL.md) | Bayesian Inference in R |
+| **Bayesian Inference** | [r-bayes](skills/r-bayes/SKILL.md) | brms, DAG validation, multilevel models, marginaleffects |
+| **Machine Learning** | [r-machine-learning](skills/r-machine-learning/SKILL.md) | XGBoost, LightGBM, CatBoost, TabNet, ensembles, CV |
 
 ## Quick Reference
 

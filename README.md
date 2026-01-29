@@ -12,7 +12,7 @@ This repository provides Claude Code configurations specifically designed for R 
 
 ## Features
 
-### Skills (8 total)
+### Skills (9 total)
 
 | Skill | Description |
 |-------|-------------|
@@ -22,7 +22,8 @@ This repository provides Claude Code configurations specifically designed for R 
 | **r-style-guide** | Naming, spacing, function design |
 | **r-oop** | S7, S3, S4, vctrs decision guide |
 | **r-package-development** | Dependencies, API design, testing |
-| **r-bayes** | brms, tidybayes, marginaleffects |
+| **r-bayes** | brms, DAG validation, multilevel models, marginaleffects |
+| **r-machine-learning** | XGBoost, LightGBM, CatBoost, TabNet, ensembles, CV |
 | **tdd-workflow** | Test-driven development with testthat |
 
 ### Commands
@@ -131,6 +132,7 @@ claude-code-r-skills/
 │       ├── r-oop/
 │       ├── r-package-development/
 │       ├── r-bayes/
+│       ├── r-machine-learning/
 │       └── tdd-workflow/
 ├── rules/
 │   ├── security.md
