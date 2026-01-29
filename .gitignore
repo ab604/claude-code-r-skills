@@ -1,0 +1,17 @@
+# R files
+.Rhistory
+.Rdata
+.RData
+.httr-oauth
+*.Rproj.user
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local settings (keep settings.json template but ignore local)
+.claude/settings.local.json
