@@ -7,6 +7,9 @@ A curated collection of Claude Code configurations for modern R development. The
 This project uses and builds on the work of:
 
 - **[Sarah Johnson's Modern R Development Guide](https://gist.github.com/sj-io/3828d64d0969f2a0f05297e59e6c15ad)** - Original guide that formed the foundation for the R skills in this repository
+
+- **[Jeremy Allen's Claude Skills Repo](https://github.com/jeremy-allen/claude-skills)**
+
 - **[Affaan Mustafa's Everything Claude Code](https://github.com/affaan-m/everything-claude-code)** - Framework structure, rules, commands, and agents adapted for R development from Affan's Hackathon winning code.
 
 ## Overview
