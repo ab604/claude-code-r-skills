@@ -19,7 +19,7 @@ This repository provides Claude Code configurations specifically designed for R 
 
 ## Features
 
-### Skills (9 total)
+### Skills (8 public + 1 local)
 
 | Skill | Description |
 |-------|-------------|
@@ -30,8 +30,13 @@ This repository provides Claude Code configurations specifically designed for R 
 | **r-oop** | S7, S3, S4, vctrs decision guide |
 | **r-package-development** | Dependencies, API design, testing |
 | **r-bayes** | brms, DAG validation, multilevel models, marginaleffects |
-| **r-machine-learning** | XGBoost, LightGBM, CatBoost, TabNet, ensembles, CV |
 | **tdd-workflow** | Test-driven development with testthat |
+
+*Local-only (not in public repo):*
+
+| Skill                  | Description                                        |
+|------------------------|----------------------------------------------------|
+| **r-machine-learning** | XGBoost, LightGBM, CatBoost, TabNet, ensembles, CV |
 
 ### Commands
 
@@ -74,11 +79,30 @@ These hooks help optimize context window usage by:
 
 ## Installation
 
-### Option 1: Copy to your project (recommended)
+### Option 1: Plugin Marketplace (recommended)
+
+```bash
+# Add the marketplace
+/plugin marketplace add ab604/claude-code-r-skills
+
+# Install R skills
+/plugin install r-skills@ab604-claude-code-r-skills
+
+# Install R language server (optional, for code intelligence)
+/plugin install r-lsp@ab604-claude-code-r-skills
+```
+
+The `r-lsp` plugin requires the R languageserver package:
+
+```r
+install.packages(c("languageserver", "lintr", "styler"))
+```
+
+### Option 2: Copy to your project
 
 ```bash
 # Clone this repository
-git clone https://github.com/YOUR_USERNAME/claude-code-r-skills.git
+git clone https://github.com/ab604/claude-code-r-skills.git
 
 # Copy to your R project
 cp -r claude-code-r-skills/.claude/ /path/to/your/project/
@@ -87,7 +111,7 @@ cp -r claude-code-r-skills/commands/ /path/to/your/project/
 cp -r claude-code-r-skills/agents/ /path/to/your/project/
 ```
 
-### Option 2: Copy to user configuration
+### Option 3: Copy to user configuration
 
 ```bash
 # Copy skills to global config
@@ -145,6 +169,9 @@ claude-code-r-skills/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
+├── .claude-plugin/
+│   ├── plugin.json                  # Plugin manifest
+│   └── marketplace.json             # Marketplace catalog
 ├── .claude/
 │   ├── CLAUDE.md                    # Project instructions
 │   ├── hooks/
@@ -163,7 +190,6 @@ claude-code-r-skills/
 │       ├── r-oop/
 │       ├── r-package-development/
 │       ├── r-bayes/
-│       ├── r-machine-learning/
 │       └── tdd-workflow/
 ├── rules/
 │   ├── security.md
@@ -177,6 +203,8 @@ claude-code-r-skills/
     ├── planner.md
     └── code-reviewer.md
 ```
+
+Note: `r-machine-learning` skill is local-only and not included in the public repository.
 
 ## Core Principles
 

@@ -15,3 +15,6 @@ Thumbs.db
 
 # Local settings (keep settings.json template but ignore local)
 .claude/settings.local.json
+
+# Local-only skills (not ready for public release)
+.claude/skills/r-machine-learning/

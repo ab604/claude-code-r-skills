@@ -1,0 +1,28 @@
+{
+  "name": "r-skills",
+  "version": "1.0.0",
+  "description": "Modern R development skills for Claude Code - tidyverse patterns, rlang metaprogramming, Bayesian inference, performance optimization, and more",
+  "author": {
+    "name": "Claude Code R Skills"
+  },
+  "homepage": "https://github.com/ab604/claude-code-r-skills",
+  "repository": "https://github.com/ab604/claude-code-r-skills",
+  "license": "MIT",
+  "keywords": [
+    "r",
+    "tidyverse",
+    "rlang",
+    "brms",
+    "bayesian",
+    "performance",
+    "s7",
+    "testing",
+    "tdd"
+  ],
+  "skills": [".claude/skills/"],
+  "commands": ["./commands/"],
+  "agents": [
+    "./agents/planner.md",
+    "./agents/code-reviewer.md"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "claude-code-r-skills",
+  "owner": {
+    "name": "Claude Code R Skills"
+  },
+  "metadata": {
+    "description": "R development tools for Claude Code - skills, hooks, and language server integration"
+  },
+  "plugins": [
+    {
+      "name": "r-skills",
+      "source": "./",
+      "description": "Modern R development skills for tidyverse, rlang, Bayesian analysis, performance, and more",
+      "version": "1.0.0",
+      "author": {
+        "name": "Claude Code R Skills"
+      },
+      "homepage": "https://github.com/ab604/claude-code-r-skills",
+      "repository": "https://github.com/ab604/claude-code-r-skills",
+      "license": "MIT",
+      "keywords": [
+        "r",
+        "tidyverse",
+        "rlang",
+        "brms",
+        "bayesian",
+        "performance",
+        "testing"
+      ],
+      "category": "development",
+      "tags": ["r", "data-science", "statistics"]
+    },
+    {
+      "name": "r-lsp",
+      "source": {
+        "source": "github",
+        "repo": "ab604/r-lsp"
+      },
+      "description": "R language server for code intelligence - diagnostics, go-to-definition, hover, references",
+      "category": "code-intelligence",
+      "tags": ["r", "lsp", "diagnostics"]
+    }
+  ]
+}
