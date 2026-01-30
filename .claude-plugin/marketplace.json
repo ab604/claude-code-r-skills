@@ -36,7 +36,7 @@
         "source": "github",
         "repo": "ab604/r-lsp"
       },
-      "description": "R language server for code intelligence - diagnostics, go-to-definition, hover, references",
+      "description": "R language server for code intelligence - diagnostics, go-to-definition, hover, references. Not needed for Positron users.",
       "category": "code-intelligence",
       "tags": ["r", "lsp", "diagnostics"]
     }
