@@ -19,10 +19,7 @@
     "testing",
     "tdd"
   ],
-  "skills": ["../.claude/skills/"],
-  "commands": ["../commands/"],
-  "agents": [
-    "../agents/planner.md",
-    "../agents/code-reviewer.md"
-  ]
+  "skills": [".claude/skills/"],
+  "commands": ["commands/"],
+  "agents": ["agents/"]
 }
