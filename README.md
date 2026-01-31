@@ -89,12 +89,11 @@ These hooks help optimize context window usage by:
 /plugin marketplace add ab604/claude-code-r-skills
 
 # Install R skills
-/plugin install r-skills@ab604-claude-code-r-skills
+/plugin install r-skills@r-skills
 
 # Install R language server (optional, for code intelligence in VS Code/terminal)
 # Note: Not needed if using Positron, which has built-in R language server support
-/plugin marketplace add ab604/r-lsp
-/plugin install r-lsp@r-lsp
+/plugin install r-lsp@r-skills
 ```
 
 The `r-lsp` plugin requires the R languageserver package:
