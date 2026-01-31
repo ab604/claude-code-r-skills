@@ -1,6 +1,8 @@
 # Claude Code R Skills
 
-A curated collection of Claude Code configurations for modern R use. These skills, rules, commands, and agents help Claude Code understand R best practices and generate idiomatic, high-quality R code. Additionally the rules and commands help with efficient token usage and enforce constraints, and agents can perform specific tasks. Obviously you can fork and adapt any of these to your case-use. I use Positron, but if you are a VSCode user there is also a plugin for R language server for code intelligence.
+A curated collection of Claude Code configurations for modern R use. These skills, rules, commands, and agents help Claude Code understand R best practices and generate idiomatic, high-quality R code. Additionally the rules and commands help with efficient token usage and enforce constraints, and agents can perform specific tasks. Obviously you can fork and adapt any of these to your case-use.
+
+I use Positron, but if you are a VSCode user there is also a plugin for R language server for code intelligence.
 
 ## Table of Contents
 
@@ -26,7 +28,7 @@ A curated collection of Claude Code configurations for modern R use. These skill
 -   [Environment Management](#environment-management)
 -   [License](#license)
 
-## Acknowledgments {#acknowledgments}
+## Acknowledgments
 
 This project uses and builds on the work of:
 
@@ -40,7 +42,7 @@ This project uses and builds on the work of:
 
 -   As an aside, I use Quarto in my workflow and use [Posit's Quarto plugin](https://github.com/posit-dev/skills) which you can add with: `/plugin marketplace add posit-dev/skills` and then `/plugin install quarto@posit-dev-skills`.
 
-## Overview {#overview}
+## Overview
 
 This repository provides Claude Code configurations specifically for R users, combining:
 
@@ -48,11 +50,11 @@ This repository provides Claude Code configurations specifically for R users, co
 -   **Development workflow tools** adapted from [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
 -   **Testing and quality rules** for R development
 
-## Understanding Feature Types {#understanding-feature-types}
+## Understanding Feature Types
 
 Claude Code uses five types of features to customise its behaviour for R development. Each serves a distinct purpose in the development workflow.
 
-### Skills {#skills}
+### Skills
 
 **What they are:** Markdown documents containing domain knowledge, best practices, and coding patterns that Claude references when writing code. Skills are passive knowledge resources loaded into Claude's context when relevant.
 
@@ -68,7 +70,7 @@ Claude Code uses five types of features to customise its behaviour for R develop
 "Write a function using tidyverse-patterns to summarize data by group"
 ```
 
-### Commands {#commands}
+### Commands
 
 **What they are:** User-invocable shortcuts (prefixed with `/`) that trigger specific workflows or behaviours. Commands are active - you call them explicitly to perform actions.
 
@@ -89,7 +91,7 @@ yes  # or "proceed" to start implementation
 /code-review
 ```
 
-### Rules {#rules}
+### Rules
 
 **What they are:** Mandatory constraints and requirements that Claude must follow. Rules enforce project standards like test coverage thresholds, security practices, and git workflows.
 
@@ -110,7 +112,7 @@ yes  # or "proceed" to start implementation
 "Make sure this follows our testing rules"
 ```
 
-### Agents {#agents}
+### Agents
 
 **What they are:** Specialized sub-agents with specific roles, expertise, and limited tool access. Agents are focused workers that handle particular types of tasks.
 
@@ -128,7 +130,7 @@ yes  # or "proceed" to start implementation
 # Claude may also invoke agents automatically when appropriate
 ```
 
-### Hooks {#hooks}
+### Hooks
 
 **What they are:** Event-driven JavaScript scripts that execute automatically at specific points in Claude's workflow (e.g., before editing files, on session start/end, before context compaction).
 
@@ -150,7 +152,7 @@ yes  # or "proceed" to start implementation
 [Hook] Context window usage: 45/50 tool calls. Consider /compact soon.
 ```
 
-## Features {#features}
+## Features
 
 ### Skills (8 public + 1 local)
 
@@ -210,9 +212,9 @@ These hooks help optimise context window usage by:
 -   Preserving session state across compaction events
 -   Consolidating documentation to reduce context bloat
 
-## Installation {#installation}
+## Installation
 
-### Option 1: Plugin Marketplace (recommended) {#option-1-plugin-marketplace-recommended}
+### Option 1: Plugin Marketplace (recommended)
 
 ``` bash
 # Add the marketplace
@@ -234,7 +236,7 @@ install.packages(c("languageserver", "lintr", "styler"))
 
 See [r-lsp](https://github.com/ab604/r-lsp) for more details.
 
-### Option 2: Copy to your project {#option-2-copy-to-your-project}
+### Option 2: Copy to your project
 
 ``` bash
 # Clone this repository
@@ -247,7 +249,7 @@ cp -r claude-code-r-skills/commands/ /path/to/your/project/
 cp -r claude-code-r-skills/agents/ /path/to/your/project/
 ```
 
-### Option 3: Copy to user configuration {#option-3-copy-to-user-configuration}
+### Option 3: Copy to user configuration
 
 ``` bash
 # Copy skills to global config
@@ -259,9 +261,9 @@ cp -r commands/* ~/.claude/commands/
 cp -r agents/* ~/.claude/agents/
 ```
 
-## Quick Reference {#quick-reference}
+## Quick Reference
 
-### Essential Modern R Patterns {#essential-modern-r-patterns}
+### Essential Modern R Patterns
 
 ``` r
 # Always use native pipe
@@ -282,7 +284,7 @@ my_func <- function(data, var) {
 map_dbl(data, mean)  # Not sapply()
 ```
 
-### Key Anti-Patterns to Avoid {#key-anti-patterns-to-avoid}
+### Key Anti-Patterns to Avoid
 
 ``` r
 # Avoid legacy magrittr pipe
@@ -298,7 +300,7 @@ group_by(x) |> summarise(y) |> ungroup()  # Use .by instead
 sapply(x, f)  # Use map_*() instead
 ```
 
-## Directory Structure {#directory-structure}
+## Directory Structure
 
 ``` text
 claude-code-r-skills/
@@ -342,7 +344,7 @@ claude-code-r-skills/
 
 Note: `r-machine-learning` skill is local-only and not included in the public repository.
 
-## Core Principles {#core-principles}
+## Core Principles
 
 1.  **Use modern tidyverse patterns** - dplyr 1.1+, native pipe, current APIs
 2.  **Profile before optimising** - Use profvis and bench
@@ -351,7 +353,7 @@ Note: `r-machine-learning` skill is local-only and not included in the public re
 5.  **Test-driven development** - Write tests before implementation
 6.  **80% minimum coverage** - Comprehensive testing required
 
-## Requirements {#requirements}
+## Requirements
 
 -   R 4.3+ (for native pipe `|>`)
 -   dplyr 1.1+ (for `.by`, `join_by()`, `reframe()`)
@@ -359,12 +361,12 @@ Note: `r-machine-learning` skill is local-only and not included in the public re
 -   tidyr 1.3+ (for `separate_wider_*()`)
 -   testthat 3.0+ (for snapshot testing)
 
-## Environment Management {#environment-management}
+## Environment Management
 
 -   **R packages**: Use `pak` for installation
 -   **R environments**: Use `renv` for project isolation
 -   **Python**: Use `uv` for Python environments (if needed)
 
-## License {#license}
+## License
 
 MIT License - see [LICENSE](LICENSE) for details.
