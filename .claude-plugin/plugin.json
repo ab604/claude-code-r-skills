@@ -19,7 +19,7 @@
     "testing",
     "tdd"
   ],
-  "skills": [".claude/skills/"],
-  "commands": ["commands/"],
-  "agents": ["agents/"]
+  "skills": ["./.claude/skills/"],
+  "commands": ["./commands/"],
+  "agents": ["./agents/"]
 }
