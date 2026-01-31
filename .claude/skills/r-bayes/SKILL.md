@@ -102,7 +102,7 @@ model <- brm(
     adapt_delta = 0.95,
     max_treedepth = 15
   ),
-  seed = 1996,
+  seed = 123,  # Set seed for reproducibility
   backend = "cmdstanr",
   file = "models/model_name",         # Cache compiled model
   file_refit = "on_change"            # Only refit if formula/data change
@@ -149,14 +149,14 @@ family = cumulative(link = "logit")
 
 ```r
 # Random intercept per participant
-onset ~ predictors + (1 | participant_id)
+outcome ~ predictors + (1 | participant_id)
 ```
 
 ### Random Slopes
 
 ```r
 # Random intercept and slope for time
-onset ~ time + predictors + (1 + time | participant_id)
+outcome ~ time + predictors + (1 + time | participant_id)
 ```
 
 ### Crossed Random Effects
@@ -176,24 +176,24 @@ model_data <- data |>
   group_by(participant_id) |>
   mutate(
     # Between-person means (stable trait)
-    anxiety_mean = mean(anxiety, na.rm = TRUE),
+    predictor_mean = mean(predictor, na.rm = TRUE),
 
     # Within-person deviations (dynamic change)
-    anxiety_dev = anxiety - anxiety_mean,
+    predictor_dev = predictor - predictor_mean,
 
     # Volatility (person-level SD)
-    anxiety_sd = sd(anxiety, na.rm = TRUE)
+    predictor_sd = sd(predictor, na.rm = TRUE)
   ) |>
   ungroup() |>
   # Standardize
   mutate(
-    anxiety_mean_z = scale(anxiety_mean)[, 1],
-    anxiety_dev_z = scale(anxiety_dev)[, 1]
+    predictor_mean_z = scale(predictor_mean)[, 1],
+    predictor_dev_z = scale(predictor_dev)[, 1]
   )
 
 # Model with both components
 model <- brm(
-  onset ~ anxiety_mean_z + anxiety_dev_z + (1 | participant_id),
+  outcome ~ predictor_mean_z + predictor_dev_z + (1 | participant_id),
   data = model_data,
   family = bernoulli()
 )
@@ -208,14 +208,14 @@ model_data <- data |>
   arrange(time) |>
   mutate(
     # Lagged values (from previous timepoint)
-    anxiety_lag = lag(anxiety, order_by = time),
-    anxiety_dev_lag = lag(anxiety_dev, order_by = time)
+    predictor_lag = lag(predictor, order_by = time),
+    predictor_dev_lag = lag(predictor_dev, order_by = time)
   ) |>
   ungroup()
 
 # Test if t-1 predicts outcome at t (establishes temporal precedence)
 model_lagged <- brm(
-  onset ~ anxiety_dev_lag_z + anxiety_mean_z + (1 | participant_id),
+  outcome ~ predictor_dev_lag_z + predictor_mean_z + (1 | participant_id),
   ...
 )
 ```
@@ -271,7 +271,7 @@ prob_meaningful <- mean(abs(posterior$b_predictor) > 0.1)
 
 ```r
 # Test if within-person effect is larger than between-person
-diff <- abs(posterior$b_anxiety_dev_z) - abs(posterior$b_anxiety_mean_z)
+diff <- abs(posterior$b_predictor_dev_z) - abs(posterior$b_predictor_mean_z)
 prob_within_larger <- mean(diff > 0)
 
 cat(sprintf("P(|within| > |between|) = %.1f%%\n", 100 * prob_within_larger))
@@ -413,11 +413,11 @@ draws |>
 ## Anti-Patterns to Avoid
 
 ```r
-# WRONG: Using contemporaneous predictors for "early warning" claims
-onset_t ~ anxiety_t  # Shows co-occurrence, not precedence
+# WRONG: Using contemporaneous predictors when temporal order matters
+outcome_t ~ predictor_t  # Shows co-occurrence, not temporal precedence
 
-# CORRECT: Use lagged predictors
-onset_t ~ anxiety_t_minus_1  # Establishes temporal precedence
+# CORRECT: Use lagged predictors to establish temporal precedence
+outcome_t ~ predictor_t_minus_1
 
 # WRONG: Ignoring clustering
 brm(outcome ~ predictor, data = longitudinal_data)
