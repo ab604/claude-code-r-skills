@@ -204,7 +204,7 @@ research → plan → tdd → dev → verify → review → commit
 
 | Skill                  | Description                                        |
 |-----------------------|-------------------------------------------------|
-| **r-machine-learning** | XGBoost, LightGBM, CatBoost, TabNet, ensembles, CV |
+| **r-machine-learning** | XGBoost, LightGBM, CatBoost, Elastic Net, ExtraTrees, ridge stacking, stratified CV — updated 2026-02-20 |
 
 ### Commands
 
@@ -397,7 +397,7 @@ claude-code-r-skills/
     └── code-reviewer.md
 ```
 
-Note: `r-machine-learning` skill is local-only and not included in the public repository.
+Note: `r-machine-learning` skill is local-only and not included in the public repository. Updated 2026-02-20 based on the WARND competition final model (4-model ridge stacked ensemble: XGBoost, Elastic Net, CatBoost, ExtraTrees; OOF AUC 0.8187). Key additions: Elastic Net and ExtraTrees patterns, stratified participant-level CV, expanded temporal feature engineering, ridge meta-learner stacking, and model selection guidance including documented TabNet failure.
 
 ## Core Principles
 
