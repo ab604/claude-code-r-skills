@@ -10,7 +10,7 @@
 
 const fs = require('fs');
 
-const ALLOWED = /(README|CLAUDE|AGENTS|CONTRIBUTING|SKILL)\.md$/;
+const ALLOWED = /(README|CLAUDE|AGENTS|CONTRIBUTING|SKILL|MEMORY)\.md$/;
 const DOC_PATTERN = /\.(md|txt)$/;
 
 try {
@@ -20,7 +20,7 @@ try {
   if (DOC_PATTERN.test(filePath) && !ALLOWED.test(filePath)) {
     console.error('[Hook] BLOCKED: Do not create documentation file: ' + filePath);
     console.error('[Hook] Consolidate docs into README.md or CLAUDE.md instead.');
-    console.error('[Hook] Allowed names: README.md, CLAUDE.md, AGENTS.md, CONTRIBUTING.md, SKILL.md');
+    console.error('[Hook] Allowed names: README.md, CLAUDE.md, AGENTS.md, CONTRIBUTING.md, SKILL.md, MEMORY.md');
     process.exit(2);
   }
 } catch (e) {
