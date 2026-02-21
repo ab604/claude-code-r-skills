@@ -14,9 +14,9 @@ try {
   const input = JSON.parse(data);
   const cmd = input.tool_input?.command || '';
   if (/git\s+push/.test(cmd)) {
-    console.log('[Hook] BLOCKED: git push requires explicit user confirmation.');
-    console.log('[Hook] Command: ' + cmd.trim());
-    console.log('[Hook] Ask the user to confirm before pushing.');
+    console.error('[Hook] BLOCKED: git push requires explicit user confirmation.');
+    console.error('[Hook] Command: ' + cmd.trim());
+    console.error('[Hook] Ask the user to confirm before pushing.');
     process.exit(2);
   }
 } catch (e) {
