@@ -20,6 +20,7 @@ try {
   if (/^git\s+push/.test(firstLine)) {
     console.error('[Hook] WARNING: About to run: ' + cmd.trim());
     console.error('[Hook] Confirm this push is intentional before proceeding.');
+    process.exit(1);
   }
 } catch (e) {
   // Ignore errors - allow tool call to proceed

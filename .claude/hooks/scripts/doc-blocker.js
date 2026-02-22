@@ -24,6 +24,7 @@ try {
     console.error('[Hook] WARNING: Creating documentation file: ' + filePath);
     console.error('[Hook] Consider consolidating docs into README.md or CLAUDE.md instead.');
     console.error('[Hook] Allowed names: README.md, CLAUDE.md, AGENTS.md, CONTRIBUTING.md, SKILL.md, MEMORY.md');
+    process.exit(1);
   }
 } catch (e) {
   // Ignore errors - allow tool call to proceed
