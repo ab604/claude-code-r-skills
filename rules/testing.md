@@ -143,13 +143,14 @@ testthat::auto_test_package()
 
 ## Coverage Thresholds
 
+`covr::package_coverage()` has no `line_coverage=`/`function_coverage=` threshold arguments — it only computes coverage. Gate on the result yourself:
+
 ```r
-# In testthat.R or as a coverage check
-covr::package_coverage(
-  type = "all",
-  line_coverage = 0.80,
-  function_coverage = 0.80
-)
+cov <- covr::package_coverage(type = "all")
+pct <- covr::percent_coverage(cov)
+if (pct < 80) {
+  stop("Coverage below 80%: ", round(pct, 1), "%")
+}
 ```
 
 **Tests are not optional. They enable confident refactoring and ensure code reliability.**
