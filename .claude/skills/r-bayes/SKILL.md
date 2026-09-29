@@ -359,6 +359,10 @@ summary(model)$fixed$Tail_ESS
 
 ### Posterior Predictive Checks
 
+`pp_check()` is a bayesplot-defined S3 generic that brms supplies a method
+for (`pp_check.brmsfit`); calling it on a fitted `brm()` model dispatches
+into brms, which draws on bayesplot's `ppc_*` functions internally.
+
 ```r
 pp_check(model)
 pp_check(model, type = "stat", stat = "mean")

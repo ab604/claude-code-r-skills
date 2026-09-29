@@ -94,6 +94,11 @@ robust_combine <- function(x, y) vec_c(x, y)      # Safer, slight overhead
 
 #### Data Backend Selection
 
+Note: the size thresholds below (>1GB / <100MB) are this file's own heuristic,
+not a documented rule from either package — neither data.table's nor dplyr's
+own docs state a specific crossover size. Treat as a starting rule of thumb
+to profile against (per "Profile before optimising" above), not a fact.
+
 ```r
 # Use data.table when:
 # - Very large datasets (>1GB)

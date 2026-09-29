@@ -262,8 +262,8 @@ expect_no_message(code)
 
 ```r
 expect_setequal(x, y)          # Same elements, any order
-expect_contains(set, element)  # Subset relationship (v3.2.0+)
-expect_in(element, set)        # Membership check (v3.2.0+)
+expect_contains(object, expected)  # Subset relationship (v3.1.9+)
+expect_in(object, expected)        # Membership check (v3.1.9+)
 expect_disjoint(set1, set2)    # No overlap (v3.3.0+)
 expect_named(x, c("a", "b"))   # Named vector/list
 ```
@@ -275,7 +275,7 @@ expect_type(x, "double")
 expect_s3_class(x, "data.frame")
 expect_s4_class(x, "S4Class")
 expect_r6_class(x, "R6Class")
-expect_shape(matrix, c(2, 3))  # Matrix/array dimensions (v3.3.0+)
+expect_shape(x, dim = c(2, 3))  # Matrix/array dimensions (v3.3.0+); real signature is expect_shape(object, nrow=, ncol=, dim=)
 expect_length(x, 10)
 ```
 
@@ -736,18 +736,13 @@ covr::package_coverage()
 covr::report()
 
 # Check specific thresholds
-cov <- covr::package_coverage()
+# NOTE: package_coverage() has no line_coverage=/function_coverage= threshold
+# arguments -- it just computes coverage. Gate on the result yourself:
+cov <- covr::package_coverage(type = "all")
 pct <- covr::percent_coverage(cov)
 if (pct < 80) {
   stop("Coverage below 80%: ", round(pct, 1), "%")
 }
-
-# In testthat.R or as a coverage check
-covr::package_coverage(
-  type = "all",
-  line_coverage = 0.80,
-  function_coverage = 0.80
-)
 ```
 
 ## Debugging & Development
@@ -787,6 +782,8 @@ devtools::test(shuffle = TRUE)
 # Watch mode - auto-run on file changes
 testthat::auto_test_package()
 ```
+
+Note: this function exists and is exported, but has no page on testthat's current pkgdown reference site and has a long-standing open issue about being broken (r-lib/testthat#759) — treat it as a legacy/lightly-maintained option, not a polished first-class workflow tool.
 
 ### Parallel Execution (Edition 3)
 

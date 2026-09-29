@@ -132,11 +132,15 @@ safe_function <- function(x, y) {
 
 ```r
 # Good error messages - specific and actionable
+# NOTE: message must be ONE character vector with named bullet elements --
+# cli_abort(msg, "i" = hint) (two positional args) silently forwards "i"=
+# into rlang::abort()'s ... as condition metadata instead of rendering it
+# as a bullet. Always use the c(...) form:
 if (length(x) == 0) {
-  cli::cli_abort(
+  cli::cli_abort(c(
     "Input {.arg x} cannot be empty.",
     "i" = "Provide a non-empty vector."
-  )
+  ))
 }
 
 # Include function name in errors

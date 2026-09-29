@@ -244,8 +244,11 @@ Employee <- new_class("Employee",
 )
 
 # Override method
+# NOTE: `@` is exclusively for property access in S7, never for invoking a
+# method. super() must be passed INTO the generic call, not have a method
+# called on it via `@` -- greet(super(x, Person)), not super(x, Person)@greet().
 method(greet, Employee) <- function(x) {
-  super(x, Person)@greet()  # Call parent method
+  greet(super(x, Person))  # Call parent method
   cat("I work at", x@company, "\n")
 }
 ```
